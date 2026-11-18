@@ -1,0 +1,42 @@
+GestorInventario/
+│
+├── main.py
+│
+├── Modelos/
+│   ├── __init__.py
+│   ├── Producto.py
+│   ├── Categoria.py
+│   └── Movimiento.py
+│
+├── Datos/
+│   ├── __init__.py
+│   ├── productos.json
+│   ├── categorias.json
+│   ├── movimientos.json
+│   ├── ProductoDAO.py
+│   ├── CategoriaDAO.py
+│   └── MovimientoDAO.py
+│
+├── Servicios/
+│   ├── __init__.py
+│   ├── ServicioProductos.py
+│   ├── ServicioCategorias.py
+│   └── ServicioMovimientos.py
+│
+├── Vistas/
+│   ├── __init__.py
+│   ├── Dashboard.py
+│   ├── MenuLateral.py
+│   └── Pantallas/
+│       ├── __init__.py
+│       ├── PantallaInicio.py
+│       ├── PantallaProductos.py
+│       ├── FormProducto.py
+│       ├── FormEditarProducto.py
+│       ├── PantallaMovimientos.py
+│       └── PantallaReportes.py
+│
+└── Validaciones/
+    ├── __init__.py
+    ├── ValidacionProducto.py
+    └── ValidacionMovimiento.py
