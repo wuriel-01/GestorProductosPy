@@ -1,1 +1,4 @@
-print("nuevo proyecto de python")
+from Vistas.DashBoard import Dashboard
+
+app = Dashboard()
+app.mainloop()

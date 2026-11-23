@@ -1,4 +1,20 @@
 [
-
-    
+    {
+        "id_producto": "f6e7be37-63ca-4830-a3d9-7a52eb3d34f4",
+        "nombre": "arroz",
+        "precio": 23.0,
+        "stock": 3,
+        "descripcion": "arroz",
+        "categoria_id": 2,
+        "codigoBarra": "1234567890123"
+    },
+    {
+        "id_producto": "prod-002",
+        "nombre": "Coca Cola",
+        "precio": 3200.0,
+        "stock": 12,
+        "descripcion": "Gaseosa de 2.25 litros",
+        "categoria_id": 2,
+        "codigoBarra": "7790000000027"
+    }
 ]

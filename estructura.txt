@@ -34,9 +34,19 @@ GestorInventario/
 │       ├── FormProducto.py
 │       ├── FormEditarProducto.py
 │       ├── PantallaMovimientos.py
-│       └── PantallaReportes.py
+│       └── PantallaCrear.pyr
 │
 └── Validaciones/
     ├── __init__.py
     ├── ValidacionProducto.py
     └── ValidacionMovimiento.py
+
+
+
+Inicio: resumen del inventario, consultar estadísticas.
+Productos: consultar, buscar, editar y eliminar productos.
+Movimientos: registrar entradas y salidas.
+Agregar producto: abrir directamente el formulario.
+
+ manejar errores al editar, al eliminar, al crear campos y luego de crear 
+ implementar formulario de creacion 
