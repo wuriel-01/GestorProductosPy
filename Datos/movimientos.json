@@ -1,4 +1,11 @@
 [
-
-    
+    {
+        "id": "eec9562e-769b-4833-9c3b-41d5336de815",
+        "id_producto": "427d60d3-1edf-4cec-91c7-288c68284d6c",
+        "nombre_producto": "Detergente",
+        "tipo": "Salida",
+        "cantidad": 400,
+        "fecha": "24/11/2026 14:29",
+        "descripcion": ""
+    }
 ]

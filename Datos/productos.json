@@ -1,20 +1,29 @@
 [
     {
-        "id_producto": "f6e7be37-63ca-4830-a3d9-7a52eb3d34f4",
-        "nombre": "arroz",
-        "precio": 23.0,
-        "stock": 3,
-        "descripcion": "arroz",
-        "categoria_id": 2,
-        "codigoBarra": "1234567890123"
-    },
-    {
         "id_producto": "prod-002",
         "nombre": "Coca Cola",
-        "precio": 3200.0,
-        "stock": 12,
+        "precio": 3500.0,
+        "stock": 17,
         "descripcion": "Gaseosa de 2.25 litros",
         "categoria_id": 2,
         "codigoBarra": "7790000000027"
+    },
+    {
+        "id_producto": "c776dca8-2a08-481d-b6c0-851944ac2f8a",
+        "nombre": "Arroz",
+        "precio": 1254.0,
+        "stock": 5,
+        "descripcion": "Arroz largo fino 1kg",
+        "categoria_id": 1,
+        "codigoBarra": "1234567890123"
+    },
+    {
+        "id_producto": "427d60d3-1edf-4cec-91c7-288c68284d6c",
+        "nombre": "Detergente",
+        "precio": 2300.0,
+        "stock": 0,
+        "descripcion": "detergente 1/2 litro",
+        "categoria_id": 3,
+        "codigoBarra": "1234567890098"
     }
 ]

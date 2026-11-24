@@ -57,7 +57,14 @@ def validar_codigoBarra(codigoBarra):
 
     elif len(codigoBarra) != 13:
         raise ValueError( "El código de barras debe contener 13 dígitos")
-        
+
+
+def validar_descripcion(descripcion):
+    if descripcion is None:
+        raise ValueError("La descripción no es válida")
+
+    if len(descripcion.strip()) > 300:
+        raise ValueError("La descripción no puede superar los 300 caracteres")       
 
 
 def validar_categoria(categoria_id):

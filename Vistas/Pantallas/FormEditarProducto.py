@@ -8,6 +8,9 @@ from Servicios.ServicioCategorias import ServicioCategorias
 class FormEditarProducto:
     def __init__(self, producto, ventana_principal, al_guardar):
         self.ventana = ctk.CTkToplevel(ventana_principal)
+        self.ventana.transient(ventana_principal)
+        self.ventana.grab_set()
+        self.ventana.focus_force()
         self.producto = producto
         self.al_guardar = al_guardar
 
@@ -150,7 +153,7 @@ class FormEditarProducto:
             )
 
             if categoria is None:
-                raise ValueError("La categoría seleccionada no existe")
+                raise ValueError("La categoría seleccionada no existe",  parent=self.ventana)
 
             self.producto.nombre = nombre
             self.producto.descripcion = descripcion
@@ -161,7 +164,8 @@ class FormEditarProducto:
             self.servicio_productos.actualizar_producto(self.producto)
 
             self.al_guardar()
+            messagebox.showinfo("Exito", "Producto actualizado correctamente",  parent=self.ventana)
             self.ventana.destroy()
 
         except ValueError as error:
-            messagebox.showerror("Error al actualizar", str(error))
+            messagebox.showerror("Error al actualizar", str(error),  parent=self.ventana)

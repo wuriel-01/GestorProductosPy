@@ -5,7 +5,7 @@ from Vistas.MenuLateral import MenuLateral
 from Vistas.Pantallas.PantallaInicio import PantallaInicio
 from Vistas.Pantallas.PantallaProductos import PantallaProductos
 from Vistas.Pantallas.FormCrearProducto import FormCrearProducto
-
+from Vistas.Pantallas.Movimientos import Movimientos
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("blue")
 
@@ -67,6 +67,10 @@ class Dashboard(ctk.CTk):
             )
         elif nombre== "+ Agregar producto":
             self.pantalla_actual=FormCrearProducto(
+                self.contenido_principal
+            )
+        elif nombre== "Movimientos":
+            self.pantalla_actual=Movimientos(
                 self.contenido_principal
             )
         

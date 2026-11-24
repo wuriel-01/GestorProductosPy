@@ -13,11 +13,15 @@ def validar_cantidad(cantidad):
     return cantidad_convertida
 
 
-def validar_tipo(tipo):
-    tipos_validos = ["entrada", "salida"]
+def validar_ingreso(stock, cantidad):
+    if int(stock) + int(cantidad) > 100000:
+        limite_ingreso = 100000 - stock
+        raise ValueError(f"El límite de ingreso es {limite_ingreso} unidades")
 
-    if not isinstance(tipo, str) or tipo.strip().lower() not in tipos_validos:
-        raise ValueError("El tipo de movimiento debe ser Entrada o Salida")
+def validar_egreso(stock, cantidad):
+    if int(cantidad)> int(stock):
+        limite_egreso = stock
+        raise ValueError(f"El límite de salida es {limite_egreso} unidades")
 
 
 def validar_descripcion(descripcion):

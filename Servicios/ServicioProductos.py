@@ -1,7 +1,7 @@
 from Datos.ProductoDAO import ProductoDAO
 from Datos.categoriaDAO import CategoriaDAO
 import uuid
-from Validaciones.ValidacionProducto import validar_nombre, validar_categoria, validar_codigoBarra, validar_precio, validar_stock
+from Validaciones.ValidacionProducto import validar_nombre, validar_categoria, validar_codigoBarra, validar_precio, validar_stock, validar_descripcion
 class ServicioProductos:
   def __init__(self):
      self.producto_dao=ProductoDAO()
@@ -33,8 +33,9 @@ class ServicioProductos:
 
   def crear_producto(self, producto):
         validar_nombre(producto.nombre)
-        validar_stock(producto.stock)
         validar_precio(producto.precio)
+        validar_stock(producto.stock)
+        validar_descripcion(producto.descripcion)
         validar_categoria(producto.categoria_id)
         validar_codigoBarra(producto.codigoBarra)
         
@@ -70,9 +71,8 @@ class ServicioProductos:
         raise ValueError("No existe el producto que desea actualizar")
 
     validar_nombre(producto.nombre)
+    validar_descripcion(producto.descripcion)
     validar_precio(producto.precio)
-    validar_categoria(producto.categoria_id)
-    validar_stock(producto_encontrado.stock)
     validar_codigoBarra(producto.codigoBarra)
 
     categoria = self.categoria_dao.obtener_por_id(producto.categoria_id)

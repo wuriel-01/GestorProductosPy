@@ -149,8 +149,8 @@ class FormCrearProducto:
           messagebox.showinfo("Exito", "Producto cargado correctamente")
           self.borrar_campos()
           return
-        except: 
-             messagebox.showerror("Error al actualizar")
+        except ValueError as error: 
+             messagebox.showerror("Error", str(error))
              return
                 
 

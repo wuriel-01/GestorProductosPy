@@ -2,7 +2,8 @@ from Datos.movimientosDAO import MovimientosDAO
 from Datos.ProductoDAO import ProductoDAO
 from Validaciones.ValidacionMovimiento import (
     validar_cantidad,
-    validar_tipo,
+    validar_egreso,
+    validar_ingreso,
     validar_descripcion
 )
 import uuid
@@ -48,23 +49,16 @@ class ServicioMovimientos:
         return movimiento_por_tipo
 
     def registrar_entrada(self, movimiento):
-        validar_descripcion(movimiento.descripcion)
-        validar_tipo("Entrada")
-        try:
-            cantidad=int(movimiento.cantidad)
-        except (ValueError, TypeError):
-          raise ValueError("La cantidad debe ser un número entero")
-
-        if cantidad<=0:
-            raise ValueError("No hay entrada de stock")
-
         producto_por_id=self.productos_dao.obtener_producto_id(movimiento.id_producto)
 
         if producto_por_id is None:
             raise ValueError("no existe producto seleccionado")
-
-        producto_por_id.stock+=cantidad
-
+        
+        cantidad_convertidad=validar_cantidad(movimiento.cantidad)
+        validar_ingreso(producto_por_id.stock, cantidad_convertidad )
+        validar_descripcion(movimiento.descripcion)
+        
+        producto_por_id.stock+=cantidad_convertidad
         producto_actualizado= self.productos_dao.actualizar_producto(producto_por_id)
 
         if not producto_actualizado:
@@ -72,7 +66,7 @@ class ServicioMovimientos:
 
         movimiento.id = str(uuid.uuid4())
         movimiento.tipo = "Entrada"
-        movimiento.cantidad = cantidad
+        movimiento.cantidad = cantidad_convertidad
         movimiento.nombre_producto = producto_por_id.nombre
         movimiento.fecha = datetime.now()
 
@@ -82,20 +76,17 @@ class ServicioMovimientos:
 
 
     def registrar_salida(self, movimiento):
-        cantidad = validar_cantidad(movimiento.cantidad)
-        validar_tipo("Salida")
-        validar_descripcion(movimiento.descripcion)
-
+        
         producto = self.productos_dao.obtener_producto_id(movimiento.id_producto)
 
         if producto is None:
             raise ValueError("No existe el producto seleccionado")
+        
+        cantidad_convertidad = validar_cantidad(movimiento.cantidad)
+        validar_egreso(producto.stock, cantidad_convertidad)
+        validar_descripcion(movimiento.descripcion)
 
-        if cantidad > producto.stock:
-            raise ValueError("No hay suficiente stock disponible")
-
-        producto.stock -= cantidad
-
+        producto.stock -= cantidad_convertidad
         producto_actualizado = self.productos_dao.actualizar_producto(producto)
 
         if not producto_actualizado:
@@ -103,7 +94,7 @@ class ServicioMovimientos:
 
         movimiento.id = str(uuid.uuid4())
         movimiento.tipo = "Salida"
-        movimiento.cantidad = cantidad
+        movimiento.cantidad = cantidad_convertidad
         movimiento.nombre_producto = producto.nombre
         movimiento.fecha = datetime.now()
         

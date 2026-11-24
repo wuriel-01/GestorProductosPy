@@ -14,7 +14,7 @@ class MovimientosDAO:
         "nombre_producto":movimiento.nombre_producto,
         "tipo":movimiento.tipo,
         "cantidad":movimiento.cantidad,
-        "fecha": movimiento.fecha.strftime("%d/%m/%Y %H:%M:%S"),
+        "fecha": movimiento.fecha.strftime("%d/%m/%Y %H:%M"),
         "descripcion":movimiento.descripcion,
         }
 
@@ -34,7 +34,7 @@ class MovimientosDAO:
                              dato["nombre_producto"],
                              dato["tipo"],
                              dato["cantidad"],
-                             datetime.strptime(dato["fecha"], "%d/%m/%Y %H:%M:%S"),
+                             datetime.strptime(dato["fecha"], "%d/%m/%Y %H:%M"),
                              dato["descripcion"]    
                            )
                            movimientos.append(nuevo_movimiento)
@@ -51,7 +51,7 @@ class MovimientosDAO:
                                             dato["nombre_producto"],
                                             dato["tipo"],
                                             dato["cantidad"],
-                                            datetime.strptime(dato["fecha"], "%d/%m/%Y %H:%M:%S"),
+                                            datetime.strptime(dato["fecha"], "%d/%m/%Y %H:%M"),
                                             dato["descripcion"]
                                         )
                                         return movimiento_id
@@ -69,7 +69,7 @@ class MovimientosDAO:
                                             dato["nombre_producto"],
                                             dato["tipo"],
                                             dato["cantidad"],
-                                            datetime.strptime(dato["fecha"], "%d/%m/%Y %H:%M:%S"),
+                                            datetime.strptime(dato["fecha"], "%d/%m/%Y %H:%M"),
                                             dato["descripcion"]
                                         )
                                         movimientos_producto.append(movimiento_producto_id)
@@ -89,7 +89,7 @@ class MovimientosDAO:
                                             dato["nombre_producto"],
                                             dato["tipo"],
                                             dato["cantidad"],
-                                            datetime.strptime(dato["fecha"], "%d/%m/%Y %H:%M:%S"),
+                                            datetime.strptime(dato["fecha"], "%d/%m/%Y %H:%M"),
                                             dato["descripcion"]
                                         )
                                         movimientos_tipo.append(movimiento_por_tipo)

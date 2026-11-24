@@ -63,6 +63,7 @@ class PantallaProductos:
          productos=self.servicios_productos.obtener_todos()
          for producto in productos:
             categoria=self.servicios_categorias.obtener_por_id(producto.categoria_id)
+            estado = self.obtener_estado_stock(producto.stock)
             self.tabla_productos.insert(
                 "",
                 tk.END,
@@ -74,10 +75,17 @@ class PantallaProductos:
                     categoria.nombre,
                     producto.descripcion,
                     producto.codigoBarra,
-                    "disponible"
+                    estado
                  
                 )
             )
+    def obtener_estado_stock(self, stock):
+        if stock == 0:
+            return "Sin stock"
+        elif stock <= 5:
+            return "Stock bajo"
+        else:
+            return "Disponible"
 
     def buscar_producto(self, evento):
         busqueda = self.buscador.get().strip()
@@ -93,7 +101,7 @@ class PantallaProductos:
                 or busqueda in producto.nombre.lower()
                 or busqueda in producto.codigoBarra.lower()
                 ):
-
+                estado = self.obtener_estado_stock(producto.stock)
                 categoria=self.servicios_categorias.obtener_por_id(producto.categoria_id)
                 self.tabla_productos.insert(
                     "",
@@ -106,7 +114,7 @@ class PantallaProductos:
                         categoria.nombre,
                         producto.descripcion,
                         producto.codigoBarra,
-                        "disponible"
+                        estado
                     )
                 )
 
@@ -148,7 +156,12 @@ class PantallaProductos:
         seleccion = self.tabla_productos.selection()
 
         if not seleccion:
-            return
+         messagebox.showerror(
+            "Error",
+            "Seleccione un producto",
+            parent=self.contenedor
+        )
+         return
 
         id_producto = seleccion[0]
 
@@ -169,12 +182,21 @@ class PantallaProductos:
             parent=self.contenedor
         )
          return
+
+        confirmacion = messagebox.askyesno(
+        "Confirmar eliminación",
+        "¿Estás seguro de que deseas eliminar este producto?", 
+        parent=self.contenedor
+        )
+
+        if not confirmacion:
+            return
          
         id_producto=seleccion[0]
         self.servicios_productos.eliminar_producto(id_producto)
         self.cargar_productos()
 
-        messagebox.showinfo("Exito", "producto eliminado correctamente")
+        messagebox.showinfo("Exito", "producto eliminado correctamente",  parent=self.contenedor)
         return 
 
         
